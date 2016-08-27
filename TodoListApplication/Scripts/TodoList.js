@@ -8,7 +8,24 @@
             { key: true, hidden: true, name: 'Id', index: 'Id', editable: true },
             { key: false, name: 'TaskName', index: 'TaskName', editable: true },
             { key: false, name: 'TaskDescription', index: 'TaskDescription', editable: true },
-            { key: false, name: 'TargetDate', index: 'TargetDate', editable: true, formatter: 'date', formatoptions: { newformat: 'd/m/Y' } },
+            {
+                key: false, name: 'TargetDate', index: 'TargetDate', editable: true, formatter: 'date', formatoptions: { newformat: 'd/m/Y' },
+                editoptions:{size:20, 
+                  dataInit:function(el){ 
+                        $(el).datepicker({dateFormat:'dd-M-yy'}); 
+                  }, 
+                  defaultValue: function(){ 
+                    var currentTime = new Date(); 
+                    var month = parseInt(currentTime.getMonth() + 1); 
+                    month = month <= 9 ? "0"+month : month; 
+                    var day = currentTime.getDate(); 
+                    day = day <= 9 ? "0"+day : day; 
+                    var year = currentTime.getFullYear(); 
+                      //return year+"-"+month + "-"+day; 
+                    //return day + "-" + month + "-" + year;
+                  } 
+                } 
+            },
             { key: false, name: 'Severity', index: 'Severity', editable: true, edittype: 'select', editoptions: { value: { 'L': 'Low', 'M': 'Medium', 'H': 'High' } } },
             { key: false, name: 'TaskStatus', index: 'TaskStatus', editable: true, edittype: 'select', editoptions: { value: { 'A': 'Active', 'I': 'InActive' } } }],
         pager: jQuery('#pager'),
@@ -61,7 +78,9 @@
                 if (response.responseText) {
                     alert(response.responseText);
                 }
-            }
+            },
+            width: 600,
+            height:300
         },
         {
             // delete options
