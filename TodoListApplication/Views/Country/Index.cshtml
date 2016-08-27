@@ -1,16 +1,12 @@
 ﻿@{
-    ViewBag.Title = "Todo List";
+    ViewBag.Title = "Country";
 }
 
-<h2>Todo List</h2>
+<h2>Country List</h2>
 <div>
-    <table id="grid"></table>
+    <table id="country"></table>
     <div id="pager"></div>
-    <br />
-    <hr />
-    <br />
-    <table id="grid1"></table>
-    <div id="pager1"></div>
+    
 </div>
 
 <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
@@ -19,10 +15,9 @@
 <script src="~/Scripts/jquery-ui-1.10.4.min.js"></script>
 <script src="~/Scripts/i18n/grid.locale-en.js"></script>
 <script src="~/Scripts/jquery.jqGrid.min.js"></script>
-<script src="~/Scripts/TodoList.js"></script>
-<script src="~/Scripts/TodoList1.js"></script>
+<script src="~/Scripts/app/countrygrid.js"></script>
 
-   <style type="text/css">
+<style type="text/css">
     .ui-jqgrid-btable .ui-state-highlight {
         background: yellow;
     }

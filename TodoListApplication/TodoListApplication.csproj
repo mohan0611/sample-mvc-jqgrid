@@ -45,6 +45,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -184,8 +186,33 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\TodoListController.cs" />
     <Compile Include="DBContext\TodoContext.cs" />
+    <Compile Include="Entity\City.cs">
+      <DependentUpon>TodoList_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Country.cs">
+      <DependentUpon>TodoList_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\TodoList.cs">
+      <DependentUpon>TodoList_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\TodoList_Entity.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TodoList_Entity.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\TodoList_Entity.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TodoList_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\TodoList_Entity.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TodoList_Entity.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -264,9 +291,27 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="Entity\TodoList_Entity.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TodoList_Entity.edmx</DependentUpon>
+      <LastGenOutput>TodoList_Entity.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entity\TodoList_Entity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TodoList_Entity.edmx</DependentUpon>
+      <LastGenOutput>TodoList_Entity.cs</LastGenOutput>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <EntityDeploy Include="Entity\TodoList_Entity.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TodoList_Entity.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Entity\TodoList_Entity.edmx.diagram">
+      <DependentUpon>TodoList_Entity.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\app\countrygrid.js" />
     <Content Include="Scripts\i18n\grid.locale-ar.js" />
     <Content Include="Scripts\i18n\grid.locale-bg.js" />
     <Content Include="Scripts\i18n\grid.locale-bg1251.js" />
@@ -376,6 +421,7 @@
     <Content Include="Views\Default1\Create.cshtml" />
     <Content Include="Views\Default1\Edit.cshtml" />
     <Content Include="Views\Default1\Delete.cshtml" />
+    <Content Include="Views\Country\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -390,6 +436,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
