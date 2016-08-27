@@ -110,7 +110,19 @@
         colModel: [
                     { key: true, hidden:true, name: 'CityID', index: 'CityID', editable: true },
                     { key: false, name: 'CityName', index: 'CountryName', editable: true },
-                    { key: false, name: 'CountryName', index: 'CountryName', width: 80, editable: false },
+                    {
+                        key: false, name: 'CountryName', index: 'CountryName', width: 80, editable: true, edittype: 'select', align: 'center', formatter: 'select',
+                        editoptions: { value: getCountrySelectOptions() }
+                        //function getAllSelectOptions() {
+                        //    var states = {
+                        //        '1': 'Alabama', '2': 'California', '3': 'Florida',
+                        //        '4': 'Hawaii', '5': 'London', '6': 'Oxford'
+                        //    };
+
+                        //    return states;
+                        //}
+                        
+                    },
                     { key: false, name: 'TotalPopulation', index: 'TotalPopulation', width: 80, align: "right", editable: true },
                     { key: false, hidden: true, name: 'CountryID', index: 'CountryID', width: 80, align: "right", editable: true }
         ],
@@ -161,7 +173,7 @@
             closeAfterAdd: true,
             beforeSubmit: function (postdata, formid) {
                 //console.log($("#country").jqGrid('setSelection', "row_id"));
-                postdata.CountryId = $('#countrynamedisp').val();
+                postdata.CountryID = $('#countrynamedisp').val();
                 return[true,'']; 
             },
             afterComplete: function (response) {
@@ -187,3 +199,12 @@
             }
         });
 });
+
+function getCountrySelectOptions() {
+    var country = {
+        '1': 'Alabama', '2': 'California', '3': 'Florida',
+        '4': 'Hawaii', '5': 'London', '6': 'Oxford'
+    };
+
+    return country;
+}
