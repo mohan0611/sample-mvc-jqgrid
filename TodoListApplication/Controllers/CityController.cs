@@ -22,18 +22,19 @@ namespace TodoListApplication.Controllers
         }
 
 
-        //To get the list of City for the given country
+        //To get the list of City for the given  country
         public JsonResult GetCityLists(string sidx, string sord, int page, int rows, int countryid)  
         {
             int pageIndex = Convert.ToInt32(page) - 1;
             int pageSize = rows;
-            var cityresult = db.Cities.Select(
+            var cityresult = db.Cities.Where(p => p.CountryID == countryid).Select(
                     a => new
                         {   a.CityID,
-                            a.CityName, 
+                            a.CityName,
+                            a.CountryID,
                             a.Country.CountryName,
                             a.TotalPopulation
-                        });
+                    });
             int totalRecords = cityresult.Count();
             var totalPages = (int)Math.Ceiling((float)totalRecords / (float)rows);
             if (sord.ToUpper() == "DESC")
@@ -57,7 +58,7 @@ namespace TodoListApplication.Controllers
 
         // TODO:insert a new row to the grid logic here
         [HttpPost]
-        public string Create([Bind(Exclude = "Id")] City objCity)
+        public string Create([Bind(Exclude = "CityID")] City objCity)
         {
             string msg;
             try

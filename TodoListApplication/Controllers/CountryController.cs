@@ -55,7 +55,7 @@ namespace TodoListApplication.Controllers
 
         // TODO:insert a new row to the grid logic here
         [HttpPost]
-        public string Create([Bind(Exclude = "Id")] Country objCountry)
+        public string Create([Bind(Exclude = "CountryId")] Country objCountry)
         {
             string msg;
             try
