@@ -13,7 +13,7 @@
             { key: false, name: 'TaskStatus', index: 'TaskStatus', editable: true, edittype: 'select', editoptions: { value: { 'A': 'Active', 'I': 'InActive' } } }],
         pager: jQuery('#pager'),
         rowNum: 10,
-        rowList: [10, 20, 30, 40],
+        rowList: [10, 20, 30, 40], 
         height: '100%',
         viewrecords: true,
         caption: 'Todo List',
