@@ -1,0 +1,70 @@
+﻿@model TodoListApplication.Models.TodoList
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>TodoList</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TaskName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TaskName)
+            @Html.ValidationMessageFor(model => model.TaskName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TaskDescription)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TaskDescription)
+            @Html.ValidationMessageFor(model => model.TaskDescription)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TargetDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TargetDate)
+            @Html.ValidationMessageFor(model => model.TargetDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Severity)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Severity)
+            @Html.ValidationMessageFor(model => model.Severity)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TaskStatus)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TaskStatus)
+            @Html.ValidationMessageFor(model => model.TaskStatus)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

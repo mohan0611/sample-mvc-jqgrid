@@ -1,0 +1,50 @@
+﻿@model TodoListApplication.Models.TodoList
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>TodoList</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TaskName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TaskName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TaskDescription)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TaskDescription)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TargetDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TargetDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Severity)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Severity)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TaskStatus)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TaskStatus)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
